@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://graphics/world/garys_house.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Gary.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/GarysHouse.gd" type="Script" id=3]
+[ext_resource path="res://scenes/objects/Chair.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/objects/Plant.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/objects/Table.tscn" type="PackedScene" id=6]
+[ext_resource path="res://audio/pallet_town_theme.mp3" type="AudioStream" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9.64217, 8.97727 )
+
+[node name="GarysHouse" type="Sprite"]
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Gary" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -18, 34 )
+collision_mask = 2
+
+[node name="Plant1" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -56, 47.489 )
+
+[node name="Plant2" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 56, 47.489 )
+
+[node name="BookShelf" type="StaticBody2D" parent="YSort"]
+position = Vector2( -40, -41 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/BookShelf"]
+visible = false
+position = Vector2( 0, 0.826 )
+scale = Vector2( 0.803, 0.917 )
+shape = SubResource( 1 )
+
+[node name="BookShelf2" type="StaticBody2D" parent="YSort"]
+position = Vector2( -56, -41 )
+collision_layer = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/BookShelf2"]
+visible = false
+position = Vector2( -0.294, 0.826 )
+scale = Vector2( 0.83, 0.919 )
+shape = SubResource( 1 )
+
+[node name="BookShelf3" type="StaticBody2D" parent="YSort"]
+visible = false
+position = Vector2( 56, -41 )
+collision_layer = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/BookShelf3"]
+position = Vector2( 0.00299835, 0.826 )
+scale = Vector2( 0.83, 0.919 )
+shape = SubResource( 1 )
+
+[node name="Chair1" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -24, 10.488 )
+
+[node name="Chair2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -24, -5.512 )
+
+[node name="Chair3" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 24, 10.488 )
+
+[node name="Chair4" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 24, -5.512 )
+
+[node name="Table" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 0, -0.444 )
+
+[node name="Walls" type="StaticBody2D" parent="YSort"]
+visible = false
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="YSort/Walls"]
+polygon = PoolVector2Array( -64, 64, -64, -48, 64, -48, 64, 64, 68, 64, 67, -68, -69, -68, -70, 64 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Walls"]
+polygon = PoolVector2Array( -70, 64, 64, 64, 64, 66, -70, 66 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
