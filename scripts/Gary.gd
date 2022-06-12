@@ -5,7 +5,11 @@ export var speed = 25
 var orientation = "down"
 onready var animationPlayer = $Animation/AnimationPlayer
 onready var sprite = $Animation/Sprite
-onready var audio = $Audio
+var readyToChangeArea = false
+var nextArea = "garysHouse"
+var nextAreaDoorOrientation = "down"
+
+signal onAreaChange
 
 func run():
 	if buttonIsPressed("down"):
@@ -33,7 +37,11 @@ func run():
 		playAnimation("walking")
 			
 	move_and_slide(motion, Vector2(0, -1))
-	
+
+func _input(_event):
+	if buttonIsPressed(nextAreaDoorOrientation) and readyToChangeArea:
+		emit_signal("onAreaChange", nextArea)
+
 func buttonIsPressed(button):
 	if button == "down":
 		return Input.is_action_pressed("down") and not Input.is_action_pressed("up") and not Input.is_action_pressed("left") and not Input.is_action_pressed("right")
@@ -56,3 +64,11 @@ func playAnimation(movement):
 
 func movementPlusOrientationString(movement):
 	return movement + orientation[0].to_upper() + str(orientation.trim_prefix(str(orientation[0])))
+
+func _on_ChangeAreaTrigger_body_entered(_body, area, doorOrientation):
+	readyToChangeArea = true
+	nextArea = area
+	nextAreaDoorOrientation = doorOrientation
+
+func _on_ChangeAreaTrigger_body_exited(_body):
+	readyToChangeArea = false

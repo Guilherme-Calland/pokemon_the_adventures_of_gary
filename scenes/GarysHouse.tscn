@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://graphics/world/garys_house.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Gary.tscn" type="PackedScene" id=2]
@@ -6,10 +6,12 @@
 [ext_resource path="res://scenes/objects/Chair.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/objects/Plant.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/objects/Table.tscn" type="PackedScene" id=6]
-[ext_resource path="res://audio/pallet_town_theme.mp3" type="AudioStream" id=7]
+[ext_resource path="res://audio/palletTownTheme.mp3" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.64217, 8.97727 )
+
+[sub_resource type="RectangleShape2D" id=2]
 
 [node name="GarysHouse" type="Sprite"]
 texture = ExtResource( 1 )
@@ -17,11 +19,12 @@ script = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Gary" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -18, 34 )
+position = Vector2( -16, 51 )
 collision_mask = 2
 
 [node name="Plant1" parent="YSort" instance=ExtResource( 5 )]
@@ -87,4 +90,16 @@ polygon = PoolVector2Array( -70, 64, 64, 64, 64, 66, -70, 66 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-autoplay = true
+
+[node name="ChangeAreaTrigger" type="Area2D" parent="."]
+position = Vector2( -16, 62 )
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeAreaTrigger"]
+visible = false
+position = Vector2( 0, 1 )
+scale = Vector2( 1.546, 0.024 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="ChangeAreaTrigger" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_entered" binds= [ "palletTown", "down" ]]
+[connection signal="body_exited" from="ChangeAreaTrigger" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_exited"]

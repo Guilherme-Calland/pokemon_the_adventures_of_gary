@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/professorOaksTheme.mp3-198aef94e951f03e6fe299714eeda1cd.mp3str"
+
+[deps]
+
+source_file="res://audio/professorOaksTheme.mp3"
+dest_files=[ "res://.import/professorOaksTheme.mp3-198aef94e951f03e6fe299714eeda1cd.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

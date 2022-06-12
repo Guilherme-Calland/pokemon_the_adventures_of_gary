@@ -1,0 +1,17 @@
+extends Sprite
+
+onready var gary = $YSort/Gary
+
+func _ready():
+	gary.connect("onAreaChange", self, "changeArea")
+
+func _process(delta):
+	gary.run()
+
+func changeArea(area):
+	var areaPath = "res://scenes/" + toCapitalFirstLetter(area) + ".tscn"
+	get_tree().change_scene(areaPath)
+	
+func toCapitalFirstLetter(word):
+	return word[0].to_upper() + str(word.trim_prefix(str(word[0])))
+
