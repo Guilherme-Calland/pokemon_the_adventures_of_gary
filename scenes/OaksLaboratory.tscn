@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/AreaTemplate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/OaksLaboratory.gd" type="Script" id=2]
 [ext_resource path="res://graphics/world/oaks_laboratory.png" type="Texture" id=3]
+[ext_resource path="res://scenes/ProfessorOak.tscn" type="PackedScene" id=4]
+[ext_resource path="res://graphics/world/objects/oaks_book_shelf_1.png" type="Texture" id=5]
+[ext_resource path="res://graphics/world/objects/oaks_book_shelf_2.png" type="Texture" id=6]
+[ext_resource path="res://graphics/world/objects/oaks_table.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 1 )
@@ -12,7 +16,22 @@ texture = ExtResource( 3 )
 script = ExtResource( 2 )
 
 [node name="Gary" parent="YSort" index="0"]
-position = Vector2( 1, 81 )
+position = Vector2( 0, 82 )
+
+[node name="Table" type="Sprite" parent="YSort" index="1"]
+position = Vector2( 40, -48 )
+texture = ExtResource( 7 )
+
+[node name="ProfessorOak" parent="YSort" index="2" instance=ExtResource( 4 )]
+position = Vector2( 40, -48 )
+
+[node name="BookShelf1" type="Sprite" parent="YSort" index="3"]
+position = Vector2( -48, 16 )
+texture = ExtResource( 5 )
+
+[node name="BookShelf2" type="Sprite" parent="YSort" index="4"]
+position = Vector2( 48, 16 )
+texture = ExtResource( 6 )
 
 [node name="Exit" type="Area2D" parent="." index="2"]
 position = Vector2( 0, 92 )
@@ -21,6 +40,15 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" index="0"]
 position = Vector2( 0, 3 )
 shape = SubResource( 1 )
+
+[node name="Collisions" type="StaticBody2D" parent="." index="3"]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" index="0"]
+polygon = PoolVector2Array( -16, -80, 16, -80, 16, -64, 80, -64, 80, 20, 16, 20, 16, 32, 80, 32, 80, 96, -80, 96, -80, 32, -16, 32, -16, 20, -80, 20, -80, -58, -80, -59, -80, -58, -16, -58, -16, -79, -100, -62, -100, 115, 100, 114, 122, -18, 98, -125, -17, -124 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collisions" index="1"]
+polygon = PoolVector2Array( 17, -26, 63, -26, 64, -26, 64, -41, 64, -44, 16, -44, 16, -26 )
 
 [connection signal="body_entered" from="Exit" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_entered" binds= [ "palletTown", "down" ]]
 [connection signal="body_exited" from="Exit" to="." method="_on_ChangeAreaTrigger_body_exited"]

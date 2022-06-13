@@ -15,6 +15,7 @@ func useRealGamePixelResolution():
 
 func changeArea(area):
 	var areaPath = "res://scenes/" + toCapitalFirstLetter(area) + ".tscn"
+	
 	get_tree().change_scene(areaPath)
 
 func toCapitalFirstLetter(word):

@@ -14,23 +14,21 @@
 [ext_resource path="res://graphics/world/objects/oaks_house.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.32526, 1.95695 )
+extents = Vector2( 1.51384, 2.93542 )
 
 [node name="PalletTown" instance=ExtResource( 1 )]
 texture = ExtResource( 2 )
 script = ExtResource( 3 )
 
-[node name="YSort" parent="." index="0"]
-position = Vector2( 0, -8 )
-
 [node name="Gary" parent="YSort" index="0"]
-position = Vector2( 56, -35 )
+position = Vector2( 56, -51 )
 
 [node name="Pikachu" parent="YSort" index="1" instance=ExtResource( 4 )]
-position = Vector2( -38, -42 )
+position = Vector2( -38, -49 )
 
 [node name="Walls" type="StaticBody2D" parent="YSort" index="2"]
 visible = false
+position = Vector2( 0, -8 )
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Walls" index="0"]
@@ -77,51 +75,51 @@ polygon = PoolVector2Array( 65, 84, 65, 87, 95, 87, 95, 84 )
 polygon = PoolVector2Array( 5, 55, 5, 33, 91, 33, 91, 55 )
 
 [node name="Barrier1" type="Sprite" parent="YSort" index="3"]
-position = Vector2( -135.61, 143.496 )
+position = Vector2( -135.61, 135.496 )
 texture = ExtResource( 5 )
 
 [node name="Barrier2" type="Sprite" parent="YSort" index="4"]
-position = Vector2( 56, 144 )
+position = Vector2( 56, 136 )
 texture = ExtResource( 6 )
 
 [node name="Sign1" type="Sprite" parent="YSort" index="5"]
-position = Vector2( 56, 80 )
+position = Vector2( 56, 72 )
 texture = ExtResource( 7 )
 
 [node name="Sign2" type="Sprite" parent="YSort" index="6"]
-position = Vector2( -40, 16 )
+position = Vector2( -40, 8 )
 texture = ExtResource( 7 )
 
 [node name="Sign3" type="Sprite" parent="YSort" index="7"]
-position = Vector2( 24, -48 )
+position = Vector2( 24, -56 )
 texture = ExtResource( 7 )
 
 [node name="Sign4" type="Sprite" parent="YSort" index="8"]
-position = Vector2( -104, -48 )
+position = Vector2( -104, -56 )
 texture = ExtResource( 7 )
 
 [node name="Fence1" type="Sprite" parent="YSort" index="9"]
-position = Vector2( 24, 80.527 )
+position = Vector2( 24, 72.527 )
 texture = ExtResource( 8 )
 
 [node name="Fence2" type="Sprite" parent="YSort" index="10"]
-position = Vector2( -72, 17 )
+position = Vector2( -72, 9 )
 texture = ExtResource( 8 )
 
 [node name="Fence3" type="Sprite" parent="YSort" index="11"]
-position = Vector2( 80, 80.537 )
+position = Vector2( 80, 72.537 )
 texture = ExtResource( 9 )
 
 [node name="AshsHouse" type="Sprite" parent="YSort" index="12"]
-position = Vector2( -64, -51 )
+position = Vector2( -64, -59 )
 texture = ExtResource( 10 )
 
 [node name="GarysHouse" type="Sprite" parent="YSort" index="13"]
-position = Vector2( 64, -51 )
+position = Vector2( 64, -59 )
 texture = ExtResource( 11 )
 
 [node name="OaksHouse" type="Sprite" parent="YSort" index="14"]
-position = Vector2( 48, 34 )
+position = Vector2( 48, 26 )
 texture = ExtResource( 12 )
 
 [node name="GarysHouseDoor" type="Area2D" parent="." index="2"]
@@ -129,7 +127,7 @@ position = Vector2( 56, -59 )
 collision_layer = 4
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="GarysHouseDoor" index="0"]
-position = Vector2( 0.5, 10 )
+position = Vector2( 0, 10 )
 scale = Vector2( 0.578, 0.511 )
 shape = SubResource( 1 )
 
@@ -138,7 +136,7 @@ position = Vector2( 40, 37 )
 collision_layer = 4
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="OaksLabDoor" index="0"]
-position = Vector2( 0.5, 10 )
+position = Vector2( 0, 10 )
 scale = Vector2( 0.578, 0.511 )
 shape = SubResource( 1 )
 
