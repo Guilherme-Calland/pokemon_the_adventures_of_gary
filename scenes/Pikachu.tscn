@@ -3,10 +3,10 @@
 [ext_resource path="res://graphics/pikachu/pikachu_sprite_sheet.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 5.5, 3 )
+extents = Vector2( 6.5, 2.5 )
 
 [sub_resource type="Animation" id=1]
-length = 0.001
+step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -14,16 +14,16 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 1 ]
+"values": [ 0, 1, 3, 3 ]
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "dancing"
 loop = true
-step = 0.5
+step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -31,23 +31,22 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.001, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.001, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 0 ]
+"values": [ 0, 0, 1, 2, 3 ]
 }
 
 [node name="Pikachu" type="StaticBody2D"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, 5 )
+position = Vector2( -0.5, 4.5 )
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 2
-frame = 1
+hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "dancing"

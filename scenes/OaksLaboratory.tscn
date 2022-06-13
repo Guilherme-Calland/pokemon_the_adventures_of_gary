@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/AreaTemplate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/OaksLaboratory.gd" type="Script" id=2]
+[ext_resource path="res://graphics/world/oaks_laboratory.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14, 1 )
+
+[node name="OaksLaboratory" instance=ExtResource( 1 )]
+texture = ExtResource( 3 )
+script = ExtResource( 2 )
+
+[node name="Gary" parent="YSort" index="0"]
+position = Vector2( 1, 81 )
+
+[node name="Exit" type="Area2D" parent="." index="2"]
+position = Vector2( 0, 92 )
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" index="0"]
+position = Vector2( 0, 3 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Exit" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_entered" binds= [ "palletTown", "down" ]]
+[connection signal="body_exited" from="Exit" to="." method="_on_ChangeAreaTrigger_body_exited"]
