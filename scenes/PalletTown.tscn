@@ -1,9 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/AreaTemplate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://graphics/world/pallet_town.png" type="Texture" id=2]
 [ext_resource path="res://scripts/PalletTown.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Pikachu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://graphics/world/objects/barrier_1.png" type="Texture" id=5]
+[ext_resource path="res://graphics/world/objects/barrier_2.png" type="Texture" id=6]
+[ext_resource path="res://graphics/world/objects/sign.png" type="Texture" id=7]
+[ext_resource path="res://graphics/world/objects/fence_1.png" type="Texture" id=8]
+[ext_resource path="res://graphics/world/objects/fence_2.png" type="Texture" id=9]
+[ext_resource path="res://graphics/world/objects/ashs_house.png" type="Texture" id=10]
+[ext_resource path="res://graphics/world/objects/garys_house.png" type="Texture" id=11]
+[ext_resource path="res://graphics/world/objects/oaks_house.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.32526, 1.95695 )
@@ -20,6 +28,101 @@ position = Vector2( 56, -35 )
 
 [node name="Pikachu" parent="YSort" index="1" instance=ExtResource( 4 )]
 position = Vector2( -38, -42 )
+
+[node name="Walls" type="StaticBody2D" parent="YSort" index="2"]
+visible = false
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Walls" index="0"]
+polygon = PoolVector2Array( -129, 144, -145, 144, -145, -120, -160, -120, -160, 152, -129, 152 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="YSort/Walls" index="1"]
+polygon = PoolVector2Array( -129, 152, -96, 152, -96, 88, -32, 88, -32, 143, -32, 144, 146, 144, 146, -106, 146, -105, 34, -105, 34, -136, -1, -136, -1, -151, 159, -151, 159, 166, -130, 168 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="YSort/Walls" index="2"]
+polygon = PoolVector2Array( -144, -105, -1, -105, -1, -137, -144, -136 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="YSort/Walls" index="3"]
+polygon = PoolVector2Array( -96, -40, -96, -42, -112, -42, -112, -40 )
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="YSort/Walls" index="4"]
+position = Vector2( 64, 64 )
+polygon = PoolVector2Array( -96, -40, -96, -42, -112, -42, -112, -40 )
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="YSort/Walls" index="5"]
+position = Vector2( 160, 128 )
+polygon = PoolVector2Array( -96, -40, -96, -42, -112, -42, -112, -40 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="YSort/Walls" index="6"]
+position = Vector2( 128, 0 )
+polygon = PoolVector2Array( -96, -40, -96, -42, -112, -42, -112, -40 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="YSort/Walls" index="7"]
+polygon = PoolVector2Array( -91, -47, -91, -41, -37, -41, -37, -57, -91, -57 )
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="YSort/Walls" index="8"]
+position = Vector2( 128, 0 )
+polygon = PoolVector2Array( -91, -47, -91, -41, -37, -41, -37, -57, -91, -57 )
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="YSort/Walls" index="9"]
+polygon = PoolVector2Array( -95, 23, -49, 23, -49, 20, -95, 20 )
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="YSort/Walls" index="10"]
+polygon = PoolVector2Array( 1, 87, 47, 87, 47, 84, 1, 84 )
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="YSort/Walls" index="11"]
+polygon = PoolVector2Array( 65, 84, 65, 87, 95, 87, 95, 84 )
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="YSort/Walls" index="12"]
+polygon = PoolVector2Array( 5, 55, 5, 33, 91, 33, 91, 55 )
+
+[node name="Barrier1" type="Sprite" parent="YSort" index="3"]
+position = Vector2( -135.61, 143.496 )
+texture = ExtResource( 5 )
+
+[node name="Barrier2" type="Sprite" parent="YSort" index="4"]
+position = Vector2( 56, 144 )
+texture = ExtResource( 6 )
+
+[node name="Sign1" type="Sprite" parent="YSort" index="5"]
+position = Vector2( 56, 80 )
+texture = ExtResource( 7 )
+
+[node name="Sign2" type="Sprite" parent="YSort" index="6"]
+position = Vector2( -40, 16 )
+texture = ExtResource( 7 )
+
+[node name="Sign3" type="Sprite" parent="YSort" index="7"]
+position = Vector2( 24, -48 )
+texture = ExtResource( 7 )
+
+[node name="Sign4" type="Sprite" parent="YSort" index="8"]
+position = Vector2( -104, -48 )
+texture = ExtResource( 7 )
+
+[node name="Fence1" type="Sprite" parent="YSort" index="9"]
+position = Vector2( 24, 80.527 )
+texture = ExtResource( 8 )
+
+[node name="Fence2" type="Sprite" parent="YSort" index="10"]
+position = Vector2( -72, 17 )
+texture = ExtResource( 8 )
+
+[node name="Fence3" type="Sprite" parent="YSort" index="11"]
+position = Vector2( 80, 80.537 )
+texture = ExtResource( 9 )
+
+[node name="AshsHouse" type="Sprite" parent="YSort" index="12"]
+position = Vector2( -64, -59 )
+texture = ExtResource( 10 )
+
+[node name="GarysHouse" type="Sprite" parent="YSort" index="13"]
+position = Vector2( 64, -59 )
+texture = ExtResource( 11 )
+
+[node name="OaksHouse" type="Sprite" parent="YSort" index="14"]
+position = Vector2( 48, 34 )
+texture = ExtResource( 12 )
 
 [node name="GarysHouseDoor" type="Area2D" parent="." index="2"]
 position = Vector2( 56, -59 )
