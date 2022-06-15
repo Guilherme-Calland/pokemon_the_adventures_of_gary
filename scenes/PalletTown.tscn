@@ -21,7 +21,7 @@ texture = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="Gary" parent="YSort" index="0"]
-position = Vector2( 56, -51 )
+position = Vector2( -72, -52 )
 
 [node name="Pikachu" parent="YSort" index="1" instance=ExtResource( 4 )]
 position = Vector2( -38, -49 )
@@ -136,7 +136,15 @@ position = Vector2( 40, 37 )
 collision_layer = 4
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="OaksLabDoor" index="0"]
-position = Vector2( 0, 10 )
+position = Vector2( 0, 9 )
+scale = Vector2( 0.578, 0.511 )
+shape = SubResource( 1 )
+
+[node name="AshsHouse" type="Area2D" parent="." index="4"]
+position = Vector2( -72, -50 )
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="AshsHouse" index="0"]
 scale = Vector2( 0.578, 0.511 )
 shape = SubResource( 1 )
 
@@ -144,3 +152,5 @@ shape = SubResource( 1 )
 [connection signal="body_exited" from="GarysHouseDoor" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_exited"]
 [connection signal="body_entered" from="OaksLabDoor" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_entered" binds= [ "oaksLaboratory", "up" ]]
 [connection signal="body_exited" from="OaksLabDoor" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_exited"]
+[connection signal="body_entered" from="AshsHouse" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_entered" binds= [ "ashsLivingRoom", "up" ]]
+[connection signal="body_exited" from="AshsHouse" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_exited"]

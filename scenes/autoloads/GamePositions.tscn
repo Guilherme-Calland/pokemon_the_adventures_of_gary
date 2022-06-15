@@ -2,5 +2,8 @@
 
 [ext_resource path="res://scripts/Position.gd" type="Script" id=1]
 
-[node name="GamePositions" type="Node2D"]
+[node name="GamePositions" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

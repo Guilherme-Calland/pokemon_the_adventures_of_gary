@@ -5,7 +5,7 @@ onready var gary = $YSort/Gary
 func _ready():
 	gary.connect("onAreaChange", self, "changeArea")
 
-func _process(delta):
+func _process(_delta):
 #	OS.window_size = Vector2(640,640);
 	useRealGamePixelResolution()
 	gary.run()
@@ -15,7 +15,6 @@ func useRealGamePixelResolution():
 
 func changeArea(area):
 	var areaPath = "res://scenes/" + toCapitalFirstLetter(area) + ".tscn"
-	
 	get_tree().change_scene(areaPath)
 
 func toCapitalFirstLetter(word):

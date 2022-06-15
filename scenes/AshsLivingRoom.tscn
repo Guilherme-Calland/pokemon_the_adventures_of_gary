@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/AreaTemplate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://graphics/world/ashs_living_room.png" type="Texture" id=2]
+[ext_resource path="res://scripts/AshsLivingRoom.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 14, 0.25 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2.5, 5.5 )
+
+[node name="AshsLivingRoom" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Gary" parent="YSort" index="0"]
+position = Vector2( 43, -42 )
+
+[node name="Exit" type="Area2D" parent="." index="2"]
+position = Vector2( -15, 55 )
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" index="0"]
+position = Vector2( -1, 7.75 )
+shape = SubResource( 2 )
+
+[node name="AshsBedroom" type="Area2D" parent="." index="3"]
+position = Vector2( 54, -44 )
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AshsBedroom" index="0"]
+position = Vector2( 7, 4.5 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Exit" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_entered" binds= [ "palletTown", "down" ]]
+[connection signal="body_exited" from="Exit" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_exited"]
+[connection signal="body_entered" from="AshsBedroom" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_entered" binds= [ "ashsBedroom", "none" ]]
+[connection signal="body_exited" from="AshsBedroom" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_exited"]
