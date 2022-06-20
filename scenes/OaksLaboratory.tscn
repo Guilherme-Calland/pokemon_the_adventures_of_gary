@@ -51,4 +51,4 @@ polygon = PoolVector2Array( -16, -80, 16, -80, 16, -64, 80, -64, 80, 20, 16, 20,
 polygon = PoolVector2Array( 17, -26, 63, -26, 64, -26, 64, -41, 64, -44, 16, -44, 16, -26 )
 
 [connection signal="body_entered" from="Exit" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_entered" binds= [ "palletTown", "down" ]]
-[connection signal="body_exited" from="Exit" to="." method="_on_ChangeAreaTrigger_body_exited"]
+[connection signal="body_exited" from="Exit" to="YSort/Gary" method="_on_ChangeAreaTrigger_body_exited"]
